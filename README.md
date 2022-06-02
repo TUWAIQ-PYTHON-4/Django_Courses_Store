@@ -19,6 +19,7 @@
 #### Review :
 - rating
 - comment
+- course (the course to be reviewed)
 - user (use the User from Django auth models)
 
 
