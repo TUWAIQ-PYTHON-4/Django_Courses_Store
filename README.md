@@ -36,21 +36,21 @@ This will show the main page in the website with a list of courses for the users
 
 
 #### Course Detail Page
-This page will show the detail of a course (when a user clicks on the course) . 
-Also , this page will display all the reviews abouth this course , and allow the users to add new reviews (only logged in user can add review). 
-A buy button , to buy the course and add it to the orders.
+- This page will show the detail of a course (when a user clicks on the course) . 
+-  this page will display all the reviews abouth this course , and allow the users to add new reviews (only logged in user can add review). 
+- A buy button , to buy the course and add it to the orders.
 
 
 #### Orders Page
-This page will display the courses that are bougth by the user and date of purchase. 
+- This page will display the courses that are bougth by the user and date of purchase. 
 
 
 #### Register Page
-This page will allow new users to register.
+- This page will allow new users to register.
 
 
 #### Login Page
-This page will be used to login users.
+- This page will be used to login users.
 
 
 
