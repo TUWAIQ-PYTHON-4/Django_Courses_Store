@@ -42,7 +42,7 @@ A buy button , to buy the course and add it to the orders.
 
 
 #### Orders Page
-This page will display the courses that are bougth by the user . 
+This page will display the courses that are bougth by the user and date of purchase. 
 
 
 #### Register Page
@@ -55,7 +55,7 @@ This page will be used to login users.
 
 
 #### Add Course Page
-- Thie page will be used to let the users add new courses . NOTE: Only user who has permission to add a course will be able to add a course.
+- Thie page will be used to let the users add new courses . NOTE: Only user who has permission to add a course will be able to add a course .
 
 
 
