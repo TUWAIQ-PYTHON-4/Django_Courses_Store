@@ -58,7 +58,7 @@ def add_review(request: HttpRequest, review_id):
     return render(request, 'detail.html', context)
 
 
-def orders(request: HttpRequest):
+def orders(request: HttpRequest,order_id):
     if request.method == "POST":
         form = OrderForm(request.POST or None)
         if form.is_valid():

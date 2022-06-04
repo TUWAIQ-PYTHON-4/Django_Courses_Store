@@ -1,5 +1,17 @@
 {% extends 'home.html' %}
 {% block content%}
+
+
+
+
+<h2>Add Order :</h2>
+<form method="POST" action="{% url 'orders' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_ul }}
+    <input type="submit" value=" Order " />
+</form>
+
+
 <div class="container">
 <div class="row row-cols-1 row-cols-md-3 g-4">
    {% if course.user %}
