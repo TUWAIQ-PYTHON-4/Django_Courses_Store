@@ -1,0 +1,18 @@
+{% extends 'course/base.html' %}
+{% block title%} Add a Course {% endblock%}
+{% load crispy_forms_tags %}
+
+
+<br>
+
+{%block content%}
+
+<h2>Add a Course:</h2>
+<form method="POST" action="{% url 'add_course' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form|crispy}}
+    <input type="submit" class="btn btn-primary" value="Post Course">
+</form>
+
+
+{% endblock%}

@@ -1,0 +1,24 @@
+
+h5 ,h6,p{
+ text-align: left;
+ font-size: 15px;
+  color: #B0AFAB;
+  text-indent: 30px;
+
+}
+h3,h4{text-align: left;}
+}
+table {
+       height: 300px;
+        width: 250px;
+    }
+    td {
+  text-align: center;
+}
+.post_img{
+    height: 500px;
+    width: 380px;
+}
+.th{
+ text-align: left;
+ }

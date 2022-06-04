@@ -1,0 +1,16 @@
+{% extends 'course/base.html'%}
+{% block content %}
+{% load crispy_forms_tags %}
+<br><br>
+
+<br>
+
+<h3>REGISTER:</h3>
+<form method="POST">
+  {% csrf_token %}
+  {{form|crispy}}
+  <input type="submit" value="ADD REGISTER">
+</form>
+
+
+{% endblock %}

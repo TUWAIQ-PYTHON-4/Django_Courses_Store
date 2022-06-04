@@ -1,0 +1,26 @@
+{% extends 'course/base.html' %}
+
+
+{% block content %}
+<h3>Your orderd courses:</h3>
+
+<table class="table">
+     <thead>
+    <tr>
+      <th>Course</th>
+      <th>Price</th>
+    </tr>
+    </thead>
+    {% for c in course_orders %}
+
+        <tr>
+            <td> {{ c.course }} </td>
+            <td>{{ c.totalprice }} </td>
+
+        </tr>
+
+{% endfor %}
+
+    </table>
+
+{% endblock %}

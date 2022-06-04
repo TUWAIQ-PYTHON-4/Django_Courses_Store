@@ -1,0 +1,44 @@
+{% extends 'course/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<table class="table table-bordered">
+
+    <thead>
+<tr><th><h3>Course Information:</h3></th></tr>
+    </thead>
+    <tbody>
+
+    <tr><td>{{ course.title }}</td></tr>
+    <tr><td><img class="post_img" src="{{ course.image.url }}" ></td></tr>
+    <tr><td>{{course.description}}</td></tr>
+    <tr><td>{{course.duration}}</td></tr>
+    <tr><td>{{course.price}}</td></tr>
+    <tr><td>{{course.online}}</td></tr>
+    <tr><td>{{course.start_date}}</td></tr>
+    </tbody>
+</table>
+
+
+<h3>Course Reviews:</h3><br>
+    <p>
+     {% for review in reviews %}
+       <h6>{{ review.first_name }}<br></h6>
+       <h6> {{review.content}}<br></h6>
+        <h6>{{review.date}}<br></h6>
+    </p>
+{%endfor%}
+
+<a class="btn btn-lg btn-primary"  href="{% url 'course_orders' course.id %}" role="button">Add Course</a>
+
+    <h4>Add your Review :</h4>
+
+<form action="{% url 'course_detail' course.id %}" method="POST" >
+    {% csrf_token %}
+    {{ form|crispy }}
+<input type="submit" class="btn btn-primary" value="Post Review">
+</form>
+
+</div>
+
+{% endblock %}
