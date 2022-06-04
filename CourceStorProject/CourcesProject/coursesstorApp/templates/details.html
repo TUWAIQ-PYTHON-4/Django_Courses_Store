@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<table class="table table-bordered">
+    <thead>
+<tr><th><h3>Course Information:</h3></th></tr>
+    </thead>
+    <tbody>
+
+    <tr><td><h5>Course: </h5> {{ course.title }}</td></tr>
+    <tr><td><h5>description: </h5> {{course.description}}</td></tr>
+    <tr><td><h5>duration: </h5>{{course.duration}} Day</td></tr>
+    <tr><td><h5>price: </h5>{{course.price}} RS</td></tr>
+    <tr><td><h5>online: </h5>{{course.online}}</td></tr>
+    <tr><td><h5>start date: </h5>{{course.start_date}}</td></tr>
+    </tbody>
+</table>
+ <a class="btn btn-lg btn-primary" href="{% url 'add_order' course.id %}" role="button">Buy</a>
+<br><br><br><br><br><br><br><br>
+
+<h3>Review:</h3><br>
+    <p>
+     {% for i in  reviews %}
+       <h6>Rating: {{i.rating}}<br></h6>
+        <h6>Comment :{{i.comment}}<br></h6>
+            <h6>------------------</h6>
+    </p>
+{%endfor%}
+<h5>You must be logged in to add a review</h5>
+
+{% if user.is_authenticated %}
+<h4>Add your comment :</h4>
+<form calss="course_details" action="{% url 'course_details' course.id %}" method="POST" >
+    {% csrf_token %}
+     {{ form|crispy }}
+<br><br><br>
+    <input value="Add Review" type="submit" />
+</form>
+{%endif%}
+<style>
+h5 ,h6,p{
+ text-align: left;
+ font-size: 15px;
+  color: #B0AFAB;
+  text-indent: 30px;
+
+}
+h3,h4{text-align: left;}
+}
+table {
+       height: 300px;
+        width: 250px;
+    }
+    td {
+  text-align: center;
+}
+.post_img{
+    height: 500px;
+    width: 380px;
+}
+.th{
+ text-align: left;
+ }
+</style>
+{% endblock %}
