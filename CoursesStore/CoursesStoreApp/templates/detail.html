@@ -1,0 +1,38 @@
+{% extends 'home.html' %}
+{% block content %}
+
+<img src="{{ course.image.url }}" />
+<h1>{{ course.title }}</h1>
+
+<h3>Course Info:</h3>
+<p>
+    {{ course.description }}
+</p>
+<br>
+<h4>Published By : {{ course.user.username }}</h4>
+<br>
+<h4>Course Rating : {{ course.rating }}</h4>
+<br>
+
+
+<h4>Reviews : </h4>
+{% if review %}
+{% for review in all_items %}
+<br>
+<br>
+<p>
+    <strong>{{review.rating }}</strong>
+</p>
+<br>
+<p>
+    <strong>{{review.comment }}</strong>
+</p>
+<br>
+<h2>Add Reviews :</h2>
+<form method="POST" action="{% url 'add_review' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_ul }}
+    <input type="submit" value=" Send Review  " />
+</form>
+
+{% endblock %}
