@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+   {% if courses %}
+     {% for Course in courses%}
+<div class="card" style="width: 18rem;">
+  <img src="{{Course.image.url}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{Course.title}}</h5>
+    <h5 class="card-title" align="right">{{Course.price }} SR</h5>
+    <a href="#" class="btn btn-primary">Course Detail</a>
+  </div>
+</div>
+
+ {% endfor %}
+    {% else %}
+    <p>No Courses available</p>
+    {%endif%}
+{% endblock %}
