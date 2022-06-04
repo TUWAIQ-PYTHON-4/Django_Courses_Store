@@ -119,11 +119,11 @@ def add_Course(request: HttpRequest):
     return render(request, 'add.html', {"form": form})
 
 
-def add_course_permission(requst: HttpRequest):
-    if not requst.user.has_perm("add_course"):
+def add_course_permission(request: HttpRequest):
+    if not request.user.has_perm("add_course"):
         contentType = ContentType.objects.get_for_model(Course)
         permission = Permission.objects.get(codename="add_course", content_type=contentType)
-        requst.user.user_permissions.add(permission)
+        request.user.user_permissions.add(permission)
     return HttpResponse("The permission is added")
 
 
