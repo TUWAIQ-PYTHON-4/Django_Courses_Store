@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Courses | Details {% endblock %}
+{% block content %}
+
+<div class="container">
+<h1>{{ course.title }}</h1>
+<br>
+<img src="{{ course.image.url }}" style="width:350px ; height:350px" class="card-img-top" alt="...">
+
+<br>
+<h3>Name of course: {{ course.title }}</h3>
+ <h3> Description: {{course.desc  }}</h3>
+<h3> Start Date :{{course.start_date  }}</h3>
+<h3> Course Duration: {{course.duration  }}</h3>
+<h3> Online? {{course.online  }}</h3>
+<h3> Course Price: {{ course.price  }} SR </h3>
+
+<a class="btn btn-success" role="button" href="{% url 'orders' course.id %}">Add course</a>
+
+
+    <br>
+<h4>Review : </h4>
+<br>
+{% for comment in  course.comment_set.all %}
+<h5>{{course.rate}}</h5>
+
+
+
+{% endfor %}
+
+<br>
+
+<h3> Add Review :</h3>
+<form action="{% url 'detail' course.id %}" method="POST" >
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <input value="Submit Comment" type="submit" />
+</form>
+</div>
+{% endblock %}
