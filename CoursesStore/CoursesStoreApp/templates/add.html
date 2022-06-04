@@ -2,7 +2,7 @@
 {% block content %}
 
 <h2>Add Course :</h2>
-<form method="POST" action="{% url 'add_course' %}" enctype="multipart/form-data">
+<form method="POST" action="{% url 'add_Course' %}" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_ul }}
     <input type="submit" value=" Create Course " />
