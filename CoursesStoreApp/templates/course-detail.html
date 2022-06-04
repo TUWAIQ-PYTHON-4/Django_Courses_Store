@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<title>{% block title %} Course Detail {% endblock %}</title>
+
+{% block content %}
+
+<img src="{{course.image.url}}" />
+<h1> {{ course.title }} </h1>
+<h2> Course Details: </h2>
+<p>
+    {{course.description}}
+</p>
+<br>
+<h5> Added by: {{course.user.username}}</h5>
+<h5> duration : {{course.duration}}</h5>
+<h5> price : {{course.price}}</h5>
+<h5> start_date : {{course.start_date}}</h5>
+<h5> online : {{course.online}}</h5>
+<br>
+<h3>Reviews: </h3>
+{% for review in course.comment_set.all %}
+<p>
+    {{ review.course }}
+    {{ review.rating }}
+    {{ review.comment }}
+</p>
+{% endfor %}
+<br>
+<h2> Add Review: </h2>
+
+<form action="{% url 'Store:Course_Detail' %}" method="POST" >
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <input value="Submit Review" type="submit" />
+</form>
+{% endblock %}
