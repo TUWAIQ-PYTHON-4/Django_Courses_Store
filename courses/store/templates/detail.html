@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static%}
+
+{% block content%}
+<div class="container">
+<h1>{{ course.title }}</h1>
+<br>
+<img src="{{ course.image.url }}" style="width:350px ; height:350px" class="card-img-top" alt="...">
+<br>
+<h5>course name : {{ course.title }}</h5>
+    <h5>course description: {{ course.desc }}</h5>
+<h5>strat course: {{ course.start_date }}</h5>
+<h5>duration:{{ course.duration }}</h5>
+<h5>online:{{ course.online }}</h5>
+<h5>price:{{ course.price }} RS</h5>
+<br>
+<br>
+    <a href="{% url 'orders' course.id %}"  class="card-link">Add course</a
+<h4>Comments : </h4>
+<br>
+{% for comment in  course.comment_set.all %}
+
+<br>
+<br>
+
+<p>
+    <strong>{{ comment.comment }}</strong>
+    <p>
+        {{ comment.rate }}
+
+
+{% endfor %}
+
+<br>
+
+<h3> Add Review :</h3>
+<form action="{% url 'detail' course.id %}" method="POST" >
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <input value="Submit Comment" type="submit" />
+</form>
+</div>
+{% endblock%}

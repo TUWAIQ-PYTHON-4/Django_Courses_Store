@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static%}
+<html>
+
+
+<body>
+{% block content%}
+<h2>add course</h2>
+<form method="POST" action="{% url 'add'%}" enctype="multipart/form-data">
+
+
+    {% csrf_token %}
+
+
+    {{ form.as_ul }}
+
+    <input type="submit" value="Submit">
+    {%endblock%}
+</form>
+</body>
+
+
+
+
+
+
+
+
+</html>
