@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}Course Details{% endblock %}
+{% block content %}
+
+<img src="{{ course.image.url }}" />
+<h1>{{ course.title }}</h1>
+
+<h3>Course Info:</h3>
+<p> {{ course.description }} </p>
+<br>
+<h4>Duration : {{ course.duration }}</h4>
+<br>
+<br>
+<h4>Price : {{ course.price}}</h4>
+<br>
+<br>
+<h4>Instructor : {{ course.user.username }}</h4>
+<br>
+<h4>Start Date : {{ course.start_date }}</h4>
+<br>
+<br>
+<h4>Online : {{ course.start_date }}</h4>
+<br>
+<h4><a href="{% url 'add_order' course.id %}">Buy</h4></a>
+<br>
+
+<br>
+<br>
+
+<h4>Reviews: </h4> {% for review in course.review_set.all %}
+
+<br>
+<br>
+
+<p> 
+    <strong>{{ comment.name }}</strong> 
+    <p> {{ comment.content }} </p>
+</p>
+
+{% endfor %}
+
+<br>
+
+<h3> Add Review :</h3>
+<form action="{% url 'reviews:course_detail' course.id %}" method="POST" >
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input value="Submit Review" type="submit" />
+</form>
+
+{% endblock %}
