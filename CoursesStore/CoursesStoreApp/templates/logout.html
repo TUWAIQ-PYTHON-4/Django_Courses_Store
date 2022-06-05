@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}
+    <title>Log Out</title>
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <h1>You Have Been Logged Out </h1>
+    <h5><a href="{% url 'CoursesStoreApp:login' %}">Login Again</a></h5>
+</div>
+
+{% endblock %}
