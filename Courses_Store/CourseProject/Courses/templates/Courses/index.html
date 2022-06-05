@@ -1,0 +1,28 @@
+{% extends 'index/base.html' %}
+{% load static %}
+
+{% block content %}
+<h1> Courses page</h1>
+
+{% for course in courses %}
+
+<div class="row">
+
+    <div class="card">
+        <p>
+            <img src="{{ course.image.url }}" style="width:350px ; height:350px" class="card-img-top" alt="..."  >
+            <h3>{{ course.title }}</h3>
+            <h3>  {{ course.price  }} SR </h3>
+
+        <a class="btn btn-outline-primary" role="button" href="{%  url 'detail' course.id %}">SHOW DETAIL</a>
+
+
+
+
+        </p>
+    </div>
+
+</div>
+{% endfor %}
+
+{% endblock %} 
