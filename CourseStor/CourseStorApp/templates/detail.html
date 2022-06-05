@@ -1,0 +1,52 @@
+{% extends 'home.html' %}
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% if courses %}
+<table>
+{% for course in courses %}
+
+    <tr>
+        <td>
+    {{course.title}}
+            </td>
+        <td>
+    {{course.description}}
+            </td>
+        <td>
+    {{course.price}}
+            </td>
+        <td>
+    {{course.online}}
+        </td>
+        <td>
+    {{course.start_date}}
+            </td>
+
+    {{course.user}}
+        </td>
+
+        <td>
+            <img src="{{ 'media.images.url' }}" />
+        </td>
+</tr>
+
+</table>
+
+{% if user.is_authenticated %}
+    {% csrf_token %}
+    {{ form.as_p }}
+{% endif %}
+
+
+
+
+
+<a class="btn btn-outline-dark" href="{%url 'order' %}">Order</a>
+</body>
+</html>
