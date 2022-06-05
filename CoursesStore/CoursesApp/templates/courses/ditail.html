@@ -13,7 +13,7 @@
       <p>Course duration: {{course.duration}} day</p>
       <p>course start date :{{course.start_date}} </p>
       <p class="card-text"><small class="text-muted">{{course.online}} | {{course.price}} SAR</small></p>
-
+        <a class="btn btn-lg btn-primary" href="{% url 'add_order' course.id %}" role="button">Buy</a>
     </div>
   </div>
 </div>

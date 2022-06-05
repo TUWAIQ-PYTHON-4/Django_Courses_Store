@@ -1,4 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.models import User
+from django.db.models import Sum
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Course, Review, Order
 from .forms import NewReview
 from django.views.generic import CreateView
@@ -52,3 +54,16 @@ class CourseCreateView(CreateView):
     def form_valid(self, form):
         form.instance.author=self.request.user
         return super().form_valid(form)
+
+
+def add_order(request, course_id):
+    course = Course.objects.get(id=course_id)
+    user = User.objects.get(id=request.user.id)
+    price_after_tax = course.price + (0.15 * course.price)
+    new_order = Order.objects.create(order=course, totalprice=price_after_tax, user=user)
+    return redirect("order")
+def order1(request):
+    orders = Order.objects.filter(user=request.user)
+    total = Order.objects.aggregate(Sum('totalprice')).get("totalprice__sum")
+    context = {"course": orders , "total":total}
+    return render(request, 'courses/addorder.html', context)

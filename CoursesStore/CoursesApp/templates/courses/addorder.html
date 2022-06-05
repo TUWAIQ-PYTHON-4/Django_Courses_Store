@@ -1,0 +1,59 @@
+{% extends 'courses/base.html'%}
+{% block content %}
+
+<br>
+<br>
+<center>
+    <h3>Total courses:</h3>
+   <table class="table ">
+    <thead>
+    <tr>
+      <th>Course</th>
+      <th>Price</th>
+    </tr>
+    </thead>
+    <tbody>
+        {% for i in course %}
+    <tr>
+      <td>{{i.order}} <br>{{i.date}}</td>
+      <td>{{i.totalprice}} RS</td>
+
+           {% endfor%}
+    </tr>
+             <tr>
+                 <td>
+                    <h3>Total + tax</h3>
+                 </td>
+            <td>
+               {{total}} RS
+            </td>
+        </tr>
+    </tbody>
+  </table>
+ <a class="btn btn-lg btn-primary" href="#" role="button">Check out</a>
+</center>
+<style>
+h5 ,h6,p{
+ text-align: left;
+ font-size: 15px;
+  color: #B0AFAB;
+  text-indent: 30px;
+
+}
+h3,h4{text-align: left;}
+}
+table {
+       height: 300px;
+        width: 250px;
+    }
+
+.post_img{
+    height: 500px;
+    width: 380px;
+}
+.th{
+ text-align: left;
+ }
+</style>
+
+{% endblock %}
