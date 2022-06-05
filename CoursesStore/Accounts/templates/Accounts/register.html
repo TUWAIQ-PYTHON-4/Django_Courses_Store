@@ -1,0 +1,14 @@
+{% extends 'CoursesStoreApp/base.html' %}
+{% load static %}
+{% block title %} Register-Page
+{% endblock %}
+
+{% block content %}
+<center>
+<form action="{% url 'Accounts:register' %}" method="POST">
+{% csrf_token %}
+{{ form.as_p }}
+<input value="Register" type="submit" />
+</form>
+</center>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'CoursesStoreApp/base.html' %}
+{% load static %}
+{% block title %} Home-Page
+{% endblock %}
+
+{% block content %}
+<center>
+<div class="container">
+    <form method="POST" action="{% url 'CoursesStoreApp:add_course' %}" enctype="multipart/form-data">
+
+        <h2> Add a new course :</h2>
+      <div class="container">
+            {% csrf_token %}
+            {{ form.as_p }}
+              <input type="submit" value="Add" />
+           </div>
+
+</form>
+</div>
+</center>
+{% endblock %}
