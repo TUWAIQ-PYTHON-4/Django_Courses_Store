@@ -1,0 +1,62 @@
+{% extends 'index.html' %}
+{% block content %}
+<br>
+<br>
+<div class="col d-flex justify-content-center">
+<div class="card" style="width: 35rem;">
+  <img src="{{ course_info.image.url }}"  class="card-img-top" alt="...">
+  <div class="card-body">
+    <h3 class="card-title">{{ course_info.title }}</h3>
+    <p class="card-text">{{ course_info.descr }}</p>
+      <h6 class="card-text">Course duration : <b>{{ course_info.duration }}</b> Days</h6>
+      <h6 class="card-text">Course Online : <b>{{ course_info.online }}</b> </h6>
+      <h6 class="card-text">Course Start : <b>{{ course_info.start_date }}</b> </h6>
+      <h5 class="card-text" style="text-align:right">{{ course_info.price }} $</h5>
+{% if user.is_authenticated %}
+    <a href="{% url 'orders' course_info.id %}" class="btn btn-outline-success">Buy Now</a>
+     {% else %}
+        <a href="{% url 'login' %}" class="btn btn-outline-success">Buy Now</a>
+        {% endif %}
+  </div>
+</div>
+    </div>
+<hr>
+
+{% if user.is_authenticated %}
+
+    <a href="{% url 'add_review' course_info.id  %}" class="btn btn-warning">Add Review</a>
+{% endif %}
+
+
+
+
+<br><br><br>
+<h2>Reviews</h2>
+<br>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Comment</th>
+      <th scope="col">User</th>
+      <th scope="col">Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for review in review_info %}
+    <tr>
+      <td><img src="https://icons.iconarchive.com/icons/papirus-team/papirus-status/512/avatar-default-icon.png"
+                class="rounded-circle img-fluid shadow-1-strong" alt="smaple image" width="100"
+                height="100" /></td>
+      <th scope="row">"{{ review.comment }}"</th>
+      <td>{{ review.user }}</td>
+      <td> <b>{{ review.rating }}</b> out of 5 </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+<br><br>
+
+{% endblock %}
