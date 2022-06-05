@@ -1,0 +1,21 @@
+{% extends 'CoursesStoreApp/base.html' %}
+{% load static %}
+{% block title %} Home-Page
+{% endblock %}
+
+{% block content %}
+<dev class="container">
+
+  {% for c in course %}
+
+ <div class="card">
+     <img src="{{ c.image.url }}" style="width:100%">
+  <h1>{{ c.title }}</h1>
+  <p class="price">{{c.price}} SAR </p>
+     <p><button> <a href="{% url 'CoursesStoreApp:detail' c.id %}" > Details & Buy </button> </p>
+</div>
+<br>
+<br>
+  {% endfor %}
+{% endblock content %}
+    </dev>
