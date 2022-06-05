@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>get_object_or_404</title>
+</head>
+<body>
+    <img class="img-fluid rounded-circle border m-2" style="width: 70px; height:70px;" src="{{ namecourse.image.url}}" alt="صورة الكورس"><br>
+     <span class="text-secondary"> {{namecourse.start_date|date:'d-m-Y'}} strat in</span>
+     <h3>Name :{{namecourse.title}} </h3>
+    <p>Description :{{namecourse.description}}</p>
+    <p>Price :{{namecourse.price}} </p>
+    <p> Duration :{{namecourse.duration}} </p>
+    <p>online ? {{namecourse.online}}</p>
+
+    <h1 class="border-bottom mt-5 mb-3 mr-5 ml-5"> Reviews </h1>
+    <div class="border-bottom mt-5 mb-3 mr-5 ml-5"> </div>
+    {% for review in namecourse.Reviews.all  %}
+    <p>{{review.rating}}</p>
+    <p>{{review.comment}}</p>
+    {% endfor %}
+    {% if not namecourse.Reviews.all%}
+     <p>No review yet </p>
+    {% endif %}
+    </div>
+    <h3 class=" pd-3 mb-6 mt-5 mr-5 ml-5">add new review</h3>
+    <div class="border p-4 mr-5 ml-5">
+        <form method="POST">
+            {% csrf_token %}
+            {{form|crispy}}
+         <input class= "btn btn-secondary"type="submit" value="add">
+        <a href="{% url 'bougth' pk %}">Add to cart</a>
+
+    </form>
+   </div>
+</body>
+{% endblock content %}

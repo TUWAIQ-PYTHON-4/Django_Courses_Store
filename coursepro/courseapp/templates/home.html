@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for i in course %}
+<div class="card" style="width: 18rem;">
+  <div class="card-body" style="background-color:#D5F5E3">
+      <img class="img-fluid rounded-circle border m-2" style="width: 70px; height:70px;"
+        src="{{ i.image.url}}" alt="صورة الدرس">
+    <h5 class="card-title">{{i.title}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{i.price}}</h6>
+    <a href="{% url 'course_detail' i.id %}" class="card-link">للتسجيل اضغط هنا</a>
+    <a href="#" class="card-link">Another link</a>
+  {% endfor %}
+  </div>
+</div>
+</body>
+</html>
+{% endblock content %}
