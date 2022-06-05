@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<title> {% block title %} Register {% endblock %} </title>
+
+{% block content %}
+
+<form method="POST" action="{% url 'Store:Register' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input value="Register" type="submit">
+
+</form>
+
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+<title> {% block title %} Add Course {% endblock %}</title>
+
+{% block content %}
+<h1> Add Courses: </h1>
+<form method="POST" action="{% url 'Store:Add_Course' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ item.as_p }}
+    <input value="Add Course" type="submit">
+</form>
+{% endblock %}
