@@ -40,14 +40,13 @@ def course_details(request , course_id):
     return render(request, 'details.html', context)
 
 def add_order(request, course_id):
-    course = Course.objects.get(id=course_id)  # assuming that there is no user and the course_id is always valid existing course id
-    user = User.objects.get(id=request.user.id)  # this must always be request.user assuming user is logged in
+    course = Course.objects.get(id=course_id)
+    user = User.objects.get(id=request.user.id)
     price_after_tax = course.price + (0.15 * course.price)
-    new_order = Order.objects.create(order=course, totalprice=price_after_tax, user=user)  # assuming the same
+    new_order = Order.objects.create(order=course, totalprice=price_after_tax, user=user)
     return redirect("order")
 def order1(request):
-    orders = Order.objects.all() #when you login make this work with logged in user
-                                #order.objects.filter(user=request.user) but also make sure user is authenticated
+    orders = Order.objects.filter(user=request.user)
     total = Order.objects.aggregate(Sum('totalprice')).get("totalprice__sum")
     context = {"course": orders , "total":total}
     return render(request, 'AddOrder.html', context)
