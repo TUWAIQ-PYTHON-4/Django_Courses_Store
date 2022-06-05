@@ -1,0 +1,18 @@
+{% extends 'index.html' %}
+{% block content %}
+<br>
+<br>
+<div class="col d-flex justify-content-center">
+  <h1>Add Course</h1>
+  <br><br/>
+   <form method="POST"  enctype="multipart/form-data">
+       <br>
+        {% csrf_token %}
+        {{ form.as_p }}
+<br><br>
+  <button type="submit" class="btn btn-success">Add Course</button>
+</form>
+
+
+</div>
+{% endblock %}

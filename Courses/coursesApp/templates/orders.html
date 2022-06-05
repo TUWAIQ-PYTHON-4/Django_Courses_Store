@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+{% block content %}
+<br>
+<br>
+
+<hr>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Course name</th>
+      <th scope="col">Date</th>
+      <th scope="col">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+{% for i in order %}
+    <tr>
+      <td>{{ i.course }}</td>
+      <td>{{ i.date }}</td>
+      <td>{{i.totale_price}}</td>
+    </tr>
+{% endfor %}
+  <tr>
+  <th scope="col">Total Price</th>
+    <td>{{ total }}</td>
+  </tr>
+
+  </tbody>
+</table>
+{% endblock %}
