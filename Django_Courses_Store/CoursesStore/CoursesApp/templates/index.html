@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Course {% endblock %}
+{% block content %}
+<br><br>
+<h1 class=" text-center ">All Courses</h1>
+<dev class="container"></dev>
+{% for card in courses %}
+
+<div class="card mb-3">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img src="{{ card.image.url }}" width="500" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">{{ card.title }}</h5>
+                <p class="card-text">{{ card.description }}</p>
+                <strong><p class="card-text">{{ card.price }} SR</p></strong>
+                <p class="card-text"><small class="text-muted">duration: {{ card.duration }} Days</small></p>
+                <a href="{% url 'details' card.id %}" class="card-link">Show Detials</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                <a href="{% url 'orders' card.id %}"  class="btn btn-danger">Buy it</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endfor %}
+</div>
+{% endblock %}
