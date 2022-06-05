@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for i in course %}
+<div class="border p-3 mb-3 mt-4 mr-5 ml-5">
+    <img class="img-fluid rounded-circle border m-2" style="width: 70px; height:70px;" src="{{ i.image.url}}" alt="user image">
+    <span class="text-secondary"> Start in {{i.start_date|date:'d-m-Y'}}   Price {{i.price}}</span>
+    <h3><a class="text-dark" href="{% url 'course' i.id %}">{{i.title}}</a></h3>
+</div>
+{% endfor %}
+{% endblock content %}
