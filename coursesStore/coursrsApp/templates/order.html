@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<h3 class=" pd-3 mb-6 mt-5 mr-5 ml-5"> My Orders  </h3>
+<br>
+<dev class="container"></dev>
+{% for card in order %}
+
+<div class="border p-3 mb-3 mr-5 ml-5">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img src="{{ card.course.image.url }}" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">{{ card.course.title }}</h5>
+                <p class="card-text">{{ card.course.desc }}</p>
+                <p class="card-text"><small class="text-muted">duration: {{ card.course.duration }} Days</small></p>
+                <p class="card-text"><small class="text-muted">Price + VAT15% :  {{ card.totalprice }} SR  &nbsp&nbsp purchase at:  {{card.date}}</small></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+</div>
+
+{% endblock %}

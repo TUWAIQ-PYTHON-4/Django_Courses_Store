@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<br> <br> <br> <br>
+<figure class="text-center ">
+    <blockquote class="blockquote">
+      <p>you have been logged out </p>
+    </blockquote>
+    <figcaption class="blockquote-footer">
+      return <cite title="Source Title"><a href="{% url 'login' %}"> login</a></cite>
+    </figcaption>
+  </figure>
+{% endblock %}

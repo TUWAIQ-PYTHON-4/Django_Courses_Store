@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% load crispy_forms_tags %}
+<div class="border p-3 mb-3 mt-4 mr-5 ml-5">
+    <img class="img-fluid rounded-circle border m-2" style="width: 70px; height:70px;" src="{{ course.image.url}}" alt="user image">
+    <span class="text-secondary"> {{course.title}} </span>
+    <h6> starts {{course.start_date|date:'d-m-Y'}}  <br> Duration: {{course.duration}} Days </h6>
+  {% if course.online is True %}
+    <h6>  Online </h6>
+  {% else %}
+    <h6> Offline</h6>
+  {% endif %} 
+    <p><b>About this Course</b> <br> {{course.desc}} </p>
+  
+<a class="btn btn-secondary" href="{% url 'orders' course.id  %}" role="button">Buy <br> price : {{course.price}}  RS</a>
+</div>
+    <h1 class="border-bottom mt-5 mb-3 mr-5 ml-5"> Reviewing </h1>
+    <div class="border-bottom mt-5 mb-3 mr-5 ml-5">
+    {% for comment in course.comments.all  %}
+    <small> {{comment.user}} {{comment.rating}} ratings</small>
+    <p>{{comment.comment}}</p>
+    {% endfor %}
+    {% if not course.comments.all%}
+     <p> no Reviewing yet...</p>
+    {% endif %}
+    </div>
+    {% if user.is_authenticated %}
+    <h3 class=" pd-3 mb-6 mt-5 mr-5 ml-5"> Add Review </h3>
+    <div class="border p-4 mr-5 ml-5 ">
+        <form method="POST">
+            {% csrf_token %}
+            {{form|crispy}}
+         <input class= "btn btn-secondary"type="submit" value="send">
+    {% endif %}
+    </form>
+   </div>
+{% endblock content %}
