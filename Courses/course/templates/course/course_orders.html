@@ -11,15 +11,20 @@
       <th>Price</th>
     </tr>
     </thead>
-    {% for c in course_orders %}
+    {% for order in course %}
 
         <tr>
-            <td> {{ c.course }} </td>
-            <td>{{ c.totalprice }} </td>
+            <td> {{ order.course }} </td>
+            <td>{{ order.totalprice }} </td>
 
         </tr>
 
 {% endfor %}
+
+    <tr>
+        <th> Total</th>
+        <td>{{total}}</td>
+    </tr>
 
     </table>
 

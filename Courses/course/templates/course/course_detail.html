@@ -23,12 +23,14 @@
 <h3>Course Reviews:</h3><br>
     <p>
      {% for review in reviews %}
-       <h6>{{ review.first_name }}<br></h6>
-       <h6> {{review.content}}<br></h6>
-        <h6>{{review.date}}<br></h6>
+       <h6>{{ review.user }}<br></h6>
+       <h6> {{review.comment}}<br></h6>
+        <h6> {{review.rating}}<br></h6>
+
     </p>
 {%endfor%}
 
+{% if user.is_authenticated %}
 <a class="btn btn-lg btn-primary"  href="{% url 'course_orders' course.id %}" role="button">Add Course</a>
 
     <h4>Add your Review :</h4>
@@ -40,5 +42,5 @@
 </form>
 
 </div>
-
+{% endif %}
 {% endblock %}
