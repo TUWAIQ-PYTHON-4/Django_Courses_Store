@@ -1,0 +1,27 @@
+{% extends 'courses/base.html'%}
+ {% block content %}
+{% load crispy_forms_tags %}
+
+<br><br><br><br>
+
+<div style="padding-left:30px; border: 1px solid grey;">
+    <br>
+    <h3>REGISTER:</h3>
+    <form method="POST" style="algin:30px;">
+        {% csrf_token %}
+        {{form |crispy}} <!--name form |crispy -->
+        <br>
+        <input type="submit" value="REGISTER">
+        <br>
+        <small>If You have acount you can login <a href="#">LOGIN</a></small>
+
+    </form>
+    <br>
+</div>
+
+
+
+
+
+  {% endblock content %}
+
