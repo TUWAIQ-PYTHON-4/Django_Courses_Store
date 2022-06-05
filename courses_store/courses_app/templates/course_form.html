@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% crispy example_form example_form.helper %}
+
+{% block title %}
+    <title>Add Course</title>
+{% endblock %}
+
+{% block content %}
+<div class="my-center" style="width:60%; padding:1rem; background-color: #FFC300 ; border-radius:10px; ">
+    <h2 >Add your Course</h2>
+     <form method="POST" enctype="multipart/form-data">
+       {% csrf_token %}
+       {{ form|crispy }}
+    <button type="submit" class="btn btn-dark btn-sm" style="margin-top:0.5rem;">Post</button>
+</form>
+</div>
+{% endblock %}

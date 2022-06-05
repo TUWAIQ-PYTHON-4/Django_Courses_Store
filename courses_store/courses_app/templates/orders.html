@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Orders</title>
+{% endblock %}
+
+{% block content %}
+<div class="my-center" style="width:50%;">
+<table class="table table-hover ">
+  <thead>
+    <tr>
+      <th scope="col">Course</th>
+      <th scope="col">Price+tax</th>
+    </tr>
+  </thead>
+    <tbody>
+{% for key,value in list_of_orders.items %}
+    <tr>
+      <td>{{key}}</td>
+      <td>{{value}} SR</td>
+    </tr>
+{% endfor %}
+    <tr>
+        <td><b>Total:</b></td>
+        <td>{{total_price}} SR</td>
+    </tr>
+  </tbody>
+</table>
+    <a href="{% url 'checkout' %}" class="btn btn-success btn-sm" style="">Checkout</a>
+</div>
+{% endblock %}
