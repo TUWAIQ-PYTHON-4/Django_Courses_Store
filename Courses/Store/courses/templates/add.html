@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>add</title>
+</head>
+<body>
+{% block content %}
+
+
+
+<div class="container">
+  <div class="row">
+
+    <div class="col">
+
+    </div>
+    <div class="col-6">
+        <h2>Add course:</h2>
+
+        <form method="POST"  enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Add course" />
+        </form>
+            </div>
+            <div class="col">
+
+    </div>
+  </div>
+
+</div>
+
+
+
+{% endblock %}
+</body>
+</html>
