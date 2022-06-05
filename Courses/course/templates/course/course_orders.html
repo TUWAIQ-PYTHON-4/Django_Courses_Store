@@ -1,0 +1,31 @@
+{% extends 'course/base.html' %}
+
+
+{% block content %}
+<h3>Your orderd courses:</h3>
+
+<table class="table">
+     <thead>
+    <tr>
+      <th>Course</th>
+      <th>Price</th>
+    </tr>
+    </thead>
+    {% for order in course %}
+
+        <tr>
+            <td> {{ order.course }} </td>
+            <td>{{ order.totalprice }} </td>
+
+        </tr>
+
+{% endfor %}
+
+    <tr>
+        <th> Total</th>
+        <td>{{total}}</td>
+    </tr>
+
+    </table>
+
+{% endblock %}
