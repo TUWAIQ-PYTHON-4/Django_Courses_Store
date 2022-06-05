@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Home</title>
+{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center d-flex flex-wrap">
+    {% for item in courses %}
+    <a href="{% url 'course_detail' item.id %}" class = "class_link">
+    <div class="card bg-dark text-white" style="margin:1rem">
+  <img src="{{ item.image.url }}" class="my_img" alt="...">
+  <div class="card-img-overlay">
+    <h5 class="card-title">{{item.title}}</h5>
+      <p class="card-text">
+           {% if item.online %}
+          <small>Online</small>
+          {% else %}
+          <small >Onsite</small>
+          {% endif %}
+           | <small >{{item.duration}} Days</small> | <small >{{item.price}} SR</small>
+      </p>
+  </div>
+</div></a>
+  {% endfor %}
+</div>
+{% endblock %}
