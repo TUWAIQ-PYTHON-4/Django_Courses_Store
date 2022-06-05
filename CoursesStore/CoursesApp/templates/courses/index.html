@@ -1,0 +1,29 @@
+{% extends 'courses/base.html'%}
+{% block content %}
+{% if messages%}
+{%for message in messages %}
+<div>
+    {{message}}
+</div>
+{%endfor%}
+{%endif%}
+<br><br><br><br>
+{% for course in course %}
+<div style="padding-left:30px">
+  <div class="card">
+    <img src="{{ course.image.url }}"  width="50%" height="50%" >
+    <div class="card-body">
+      <h5 class="card-title">{{course.title}}</h5>
+      <p class="card-text"><small class="text-muted">{{course.start_date}} | {{course.price}} SAR</small></p>
+        <a class="btn btn-secondary" href="{% url 'ditail' course.id %}" role="button">SHOW DETAIL</a>
+    </div>
+  </div>
+
+</div>
+
+   {% endfor %}
+
+  {% endblock content %}
+
+
+

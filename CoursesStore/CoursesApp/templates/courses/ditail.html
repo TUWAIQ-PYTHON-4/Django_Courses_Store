@@ -1,0 +1,48 @@
+{% extends 'courses/base.html'%}
+ {% block content %}
+{% load crispy_forms_tags %}
+
+<br><br><br><br>
+
+<div class="card-group" style="padding-left:30px">
+  <div class="card">
+    <img src="{{ course.image.url }}" width="60%" height="50%">
+    <div class="card-body">
+      <h5 class="card-title">Course title: {{course.title}}</h5>
+      <p>Course description: {{course.description}}</p>
+      <p>Course duration: {{course.duration}} day</p>
+      <p>course start date :{{course.start_date}} </p>
+      <p class="card-text"><small class="text-muted">{{course.online}} | {{course.price}} SAR</small></p>
+
+    </div>
+  </div>
+</div>
+<br><br>
+
+<!-- display the review -->
+<div style="padding-left:40px; border: 1px solid grey;">
+  <h3>Review :</h3>
+  {% for commint in commints%}
+   <small>{{commint.user}} | {{commint.course}}</small>
+   <p>{{commint.comment}}</p>
+   <small>Course Rating:{{commint.rating}}</small>
+   <hr>
+  {% endfor %}
+</div>
+<br><br>
+
+{% if user.is_authenticated %}
+<div style="padding-left:30px; border: 1px solid grey;">
+    <h3>ADD REVIEW:</h3>
+    <form method="POST" style="algin:30px;">
+        {% csrf_token %}
+        {{review_form |crispy}} <!--name form |crispy -->
+        <br>
+        <input type="submit" value="SEND">
+
+    </form>
+</div>
+{%endif%}
+
+  {% endblock content %}
+

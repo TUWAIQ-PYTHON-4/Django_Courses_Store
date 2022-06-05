@@ -1,0 +1,18 @@
+
+{% extends 'courses/base.html'%}
+{% block content %}
+{% load crispy_forms_tags %}
+<br><br>
+
+<br>
+<div style="padding-left:30px;">
+<!-- add comment -->
+<h3>ADD POST:</h3>
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %} <!-- protocoal my form -->
+  {{form|crispy}} <!-- use crispy form  and form from viwes-->
+  <input type="submit" value="ADD POST">
+</form>
+</div>
+
+{% endblock %}

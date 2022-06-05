@@ -1,0 +1,15 @@
+{% extends 'courses/base.html'%}
+{% block content %}
+{% load crispy_forms_tags %}
+<br><br>
+
+<br>
+<h3>LOGIN:</h3>
+<form method="POST">
+  {% csrf_token %} <!-- protocoal my form -->
+  {{form|crispy}} <!-- use crispy form  and form from viwes-->
+  <input type="submit" value="LOGIN">
+</form>
+
+
+{% endblock %}
