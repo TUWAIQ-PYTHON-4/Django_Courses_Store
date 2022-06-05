@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %} Add new course  {% endblock %}
+{% load static %}
+{% block content %}
+<style>
+    .b {
+  text-align: left;
+  margin-top: 20px;
+  margin-bottom: 100px;
+  margin-right: 150px;
+  margin-left: 80px;
+}
+form{
+padding-top : 50px;
+}
+</style>
+
+ <h4></h4>
+<div class="b">
+    <form method="POST" action="{% url 'add' %}" enctype="multipart/form-data">
+         <div class="row">
+    <div class="col-md-12">
+      <h1>Add new course :</h1>
+      <hr/>
+      <div class="well">
+   {% csrf_token %}<br>
+         {{ form|crispy }}<br>
+              <input type="submit" value="OK" />
+           </div>
+    </div>
+  </div>
+
+</form>
+</div>
+{%endblock%}

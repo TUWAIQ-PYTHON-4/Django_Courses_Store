@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+{% block content %}
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  {% for i in courses %}
+  <div class="col">
+    <div class="card">
+      <img src="{{ i.image.url }}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{ i.title }}</h5>
+        <p class="card-text">{{ i.description }}</p>
+        <h5 class="card-title" align="rigth">{{i.price}} SR </h5>
+
+        <a class="btn btn-lg btn-primary" href="{% url 'details' i.id %}" role="button">SHOW DETAIL</a>
+        <p><br> <br><br></p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+
+{% endblock %}
