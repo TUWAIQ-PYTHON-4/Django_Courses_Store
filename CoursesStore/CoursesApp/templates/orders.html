@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Orders Page{% endblock %}
+{% block content %}
+
+<h1>Your Orders</h1>
+<br>
+<dev class="container"></dev>
+{% for card in order %}
+
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img src="{{ card.course.image.url }}" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">{{ card.course.title }}</h5>
+                <p class="card-text">{{ card.course.description }}</p>
+                <p class="card-text"><small class="text-muted">duration: {{ card.course.duration }} Days</small></p>
+                <p class="card-text"><small class="text-muted">Price + VAT15% : &nbsp&nbsp{{ card.totalprice }} SR</small></p>
+                <a href="{% url 'details' card.id %}" class="btn btn-warning">Show Detials</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+</div>
+
+{% endblock %}
