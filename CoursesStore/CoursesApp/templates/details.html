@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %} Details Cources {% endblock %}
+{% block content %}
+<div class="container">
+<div class="card mb-3">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img src="{{ course.image.url }}" width="500" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">{{ course.title }}</h5>
+                <p class="card-text">{{ course.description }}</p>
+                <strong><p class="card-text">{{ course.price }} SR</p></strong>
+                <p class="card-text"><small class="text-muted">Duration: {{ course.duration }} Month</small></p>
+                <a href="{% url 'orders' course.id %}"  class="btn btn-danger">Buy it</a>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<h2>Reviews: </h2>
+{% for comment in  course.review_set.all %}
+
+<div class="card mb-3">
+    <div class="row g-0">
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">rating: {{ comment.rating }}</h5>
+                <p class="card-text">{{ comment.comment }}</p>
+                <strong><p class="card-text">{{ comment.user.first_name }}</p></strong>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endfor %}
+
+<br>
+
+<h3> Add Comment :</h3>
+<form action="{% url 'details' course.id %}" method="POST" >
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <input value="Submit Comment" type="submit" />
+</form>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'style/style1.css' %}">
+<body class="text-center" data-new-gr-c-s-check-loaded="14.1062.0" data-gr-ext-installed="">
+  <div class="signin" align = 'center'>
+  <form class="row g-3" method="POST">
+    {% csrf_token %}
+    <div class="col-md-6">
+      <label for="inputEmail4" class="form-label">Username</label>
+      <input type="username" class="form-control" name="username">
+    </div>
+    <div class="col-md-6">
+      <label for="inputPassword4" class="form-label">Password</label>
+      <input type="password" class="form-control" name="password">
+    </div>
+    <div class="col-12">
+      <label for="inputAddress" class="form-label">Email</label>
+      <input type="email" class="form-control" name="email" placeholder="example@example.com">
+    </div>
+    <div class="col-md-6">
+        <label for="inputEmail4" class="form-label">First Name</label>
+        <input type="" class="form-control" name="first_name">
+    </div>
+    <div class="col-md-6">
+        <label for="inputPassword4" class="form-label">Last Name</label>
+        <input type="" class="form-control" name="last_name">
+    </div>
+    <button class="w-100 btn btn-lg btn-dark" type="submit">Sign Up</button>
+  </form>
+  </div>
+</body>
+  {% endblock %}
